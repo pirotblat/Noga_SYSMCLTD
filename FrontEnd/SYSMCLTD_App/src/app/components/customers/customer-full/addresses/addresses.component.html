@@ -1,0 +1,34 @@
+<h4>כתובות ללקוח {{nameCustomer}}</h4>
+<button type="button" class="btn btn-outline-dark" (click)="addUpdateAddress(modalDataAddress, 0)">הוסף כתובת</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">עיר</th>
+      <th scope="col">רחוב</th>
+      <th scope="col">תאריך הקמה</th>
+      <th scope="col">פעולות</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let address of addresses; let i = index">
+      <th scope="row">{{address.city}}</th>
+      <td>{{address.street}}</td>
+      <td>{{address.created | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <i class="bi bi-pencil btn-table" (click)="addUpdateAddress(modalDataAddress, address.id!)" title="עדכון כתובת לקוח"></i>
+        <i class="bi bi-trash btn-table" (click)="deleteAddress(address.id!, i)" title="מחק כתובת לקוח"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #modalDataAddress let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+    <strong class="btn-table" aria-hidden="true" (click)="modal.dismiss('Cross click')">×</strong>
+  </div>
+  <div class="modal-body">
+    <app-address [address]="addressUpdate" (saveAddress)="saveAddress()"></app-address>
+  </div>
+</ng-template>
+

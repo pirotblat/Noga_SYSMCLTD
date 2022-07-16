@@ -1,0 +1,43 @@
+<h2>לקוחות</h2>
+<button type="button" class="btn btn-outline-dark" (click)="addUpdateCustomer(modalData, 0)">הוסף לקוח</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">מספר לקוח</th>
+      <th scope="col">שם לקוח</th>
+      <th scope="col">ח.פ.</th>
+      <th scope="col">תאריך הקמה</th>
+      <th scope="col">פעולות</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers; let i = index">
+      <th scope="row">{{customer.customerId}}</th>
+      <td>{{customer.name}}</td>
+      <td>{{customer.customerNumber}}</td>
+      <td>{{customer.created | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <i class="bi bi-pencil btn-table" (click)="addUpdateCustomer(modalData, customer.id!)" title="עדכון פרטי לקוח"></i>
+        <i class="bi bi-trash btn-table" (click)="deleteCustomer(customer.id!, i)" title="מחק לקוח"></i>
+        <i class="bi bi-binoculars btn-table" (click)="showCustomer(customer.id!)" title="הצג פרטי לקוח"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+    <strong class="btn-table" aria-hidden="true" (click)="modal.dismiss('Cross click')">×</strong>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <app-customer [customer]="customerUpdate" (saveCustomer)="saveCustomer()"></app-customer>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')" [disabled]="!isValid">שמור</button>
+  </div> -->
+</ng-template>
+

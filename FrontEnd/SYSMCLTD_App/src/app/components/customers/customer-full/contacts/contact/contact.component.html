@@ -1,0 +1,18 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="fullName" class="form-label">שם</label>
+    <input [(ngModel)]="contact!.fullName" formControlName="fullName"
+    name="fullName" required type="text" class="form-control" id="fullName" placeholder="שם">
+  </div>
+  <div class="mb-3">
+    <label for="officeNumber" class="form-label">שם משרד</label>
+    <input [(ngModel)]="contact!.officeNumber" formControlName="officeNumber"
+    name="officeNumber" type="text" class="form-control" id="officeNumber" placeholder="שם משרד">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">אימייל</label>
+    <input [(ngModel)]="contact!.email" formControlName="email"
+    name="email" type="email" class="form-control" id="email" placeholder="אימייל">
+  </div>
+  <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary">שמור</button>
+</form>

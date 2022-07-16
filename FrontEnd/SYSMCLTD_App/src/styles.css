@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+html, body {
+  height: 100%;
+  padding: 20px;
+  margin: 0;
+  font-family: 'Ariel', Roboto, "Helvetica Neue", sans-serif;
+}
+
+.btn-table {
+  cursor: pointer;
+  padding-left:10px;
+  font-size: 22px;
+}

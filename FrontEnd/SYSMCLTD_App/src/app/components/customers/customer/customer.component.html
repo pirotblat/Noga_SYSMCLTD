@@ -1,0 +1,23 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="customerId" class="form-label">מספר לקוח</label>
+    <input [(ngModel)]="customer!.customerId" formControlName="customerId"
+    name="customerId" required type="number" class="form-control" id="customerId" placeholder="מספר לקוח">
+  </div>
+  <div class="mb-3">
+    <label for="name" class="form-label">שם לקוח</label>
+    <input [(ngModel)]="customer!.name" formControlName="name"
+    name="name" required type="text" class="form-control" id="name" placeholder="שם לקוח">
+  </div>
+  <div class="mb-3">
+    <label for="customerNumber" class="form-label">מזהה לקוח</label>
+    <input [(ngModel)]="customer!.customerNumber" formControlName="customerNumber"
+    name="customerNumber" required type="text" class="form-control" id="customerNumber" placeholder="מזהה לקוח">
+  </div>
+  <div *ngIf="formControls.customerNumber.touched && formControls.customerNumber.invalid" class="alert alert-danger">
+    <div *ngIf="formControls.customerNumber.errors!['required']">נדרש</div>
+    <div *ngIf="formControls.customerNumber.errors!['pattern']">מספרים בלבד</div>
+    <div *ngIf="formControls.customerNumber.errors!['maxlength']">נדרש רק עד 9 ספרות</div>
+  </div>
+<button type="submit" class="btn btn-primary">שמור</button>
+</form>

@@ -1,0 +1,13 @@
+<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="city" class="form-label">עיר</label>
+    <input [(ngModel)]="address!.city" formControlName="city"
+    name="city" required type="text" class="form-control" id="city" placeholder="עיר">
+  </div>
+  <div class="mb-3">
+    <label for="street" class="form-label">רחוב</label>
+    <input [(ngModel)]="address!.street" formControlName="street"
+    name="street" required type="text" class="form-control" id="street" placeholder="רחוב">
+  </div>
+  <button type="submit" [disabled]="!addressForm.valid" class="btn btn-primary">שמור</button>
+</form>

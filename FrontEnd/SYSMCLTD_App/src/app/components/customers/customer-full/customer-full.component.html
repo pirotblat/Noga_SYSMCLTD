@@ -1,0 +1,32 @@
+<div class="container" *ngIf="customer">
+  <div class="row" style="padding-top: 50px;">
+    <div class="col-md-3">
+      <h5>לקוח {{customer.name}}</h5>
+    </div>
+    <div class="col-md-3">
+      <h5>מספר מזהה {{customer.customerNumber}}</h5>
+    </div>
+    <div class="col-md-5">
+      <h5>הוקם בתאריך {{customer.created | date: 'dd/MM/yyyy'}}</h5>
+    </div>
+    <div class="col-md-1">
+      <i class="bi bi-box-arrow-right btn-table" (click)="goBack()" title="חזור"></i>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="addresses" style="padding-top: 100px;">
+    <div class="col-md-6">
+      <app-addresses
+      [addresses]="addresses" [customerId]="customerId" [nameCustomer]="nameCustomer">
+    </app-addresses>
+    </div>
+
+    <div class="col-md-6">
+      <app-contacts
+        [contacts]="contacts" [customerId]="customerId" [nameCustomer]="nameCustomer">
+      </app-contacts>
+    </div>
+</div>
+
+</div>
+

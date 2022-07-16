@@ -1,0 +1,35 @@
+<h4>אנשי קשר ללקוח {{nameCustomer}}</h4>
+<button type="button" class="btn btn-outline-dark" (click)="addUpdateContact(modalDataContact, 0)">הוסף איש קשר ללקוח</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">שם איש קשר</th>
+      <th scope="col">שם משרד</th>
+      <th scope="col">אימייל</th>
+      <th scope="col">תאריך הקמה</th>
+      <th scope="col">פעולות</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts; let i = index">
+      <th scope="row">{{contact.fullName}}</th>
+      <td>{{contact.officeNumber}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.created | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <i class="bi bi-pencil btn-table" (click)="addUpdateContact(modalDataContact, contact.id!)" title="עדכון פרטי איש קשר ללקוח"></i>
+        <i class="bi bi-trash btn-table" (click)="deleteContact(contact.id!, i)" title="מחק לקוח"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #modalDataContact let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+    <strong class="btn-table" aria-hidden="true" (click)="modal.dismiss('Cross click')">×</strong>
+  </div>
+  <div class="modal-body">
+    <app-contact [contact]="contactUpdate" (saveContact)="saveContact()"></app-contact>
+  </div>
+</ng-template>
+
