@@ -75,6 +75,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
     .subscribe(findCustomer => {
       if(!findCustomer) {
         let subscriptionSave = new Subscription;
+        this.customerUpdate.customerNumber = +this.customerUpdate.customerNumber!;
         subscriptionSave = this.srv.addCustomer(this.customerUpdate)
         .subscribe(c => {
           this.getCustomers();
