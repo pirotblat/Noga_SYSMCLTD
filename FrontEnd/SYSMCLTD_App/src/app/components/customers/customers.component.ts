@@ -93,6 +93,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
 
   updateCustomer() {
     let subscriptionSave = new Subscription;
+    this.customerUpdate.customerNumber = +this.customerUpdate.customerNumber!;
     subscriptionSave = this.srv.updateCustomer(this.customerUpdate)
     .subscribe(c => {
       this.getCustomers();
